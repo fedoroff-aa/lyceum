@@ -8,5 +8,6 @@
 </head>
 <body>
 <p><%= request.getAttribute("f1") %> </p>
+<p>Hello</p>
 </body>
 </html>
