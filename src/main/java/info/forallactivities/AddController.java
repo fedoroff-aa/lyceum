@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class AddController {
 	@RequestMapping("/add")
 	public ModelAndView add(@RequestParam("f1") String s) {
-		System.out.println("Hello from servlet");
+		System.out.println("Hello from servlet!!!");
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("success.jsp");
 		mav.addObject("f1", s);
