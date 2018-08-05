@@ -20,7 +20,7 @@ public class AddController {
 			Connection con = DriverManager.getConnection("jdbc:mysql://172.30.234.118:3306/workspace", "userhKP", "ILweMo3x");
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery("select * from people;");
-			while (rs.next()) {for (int i = 1; i <= 2; i++) System.out.print(rs.getString(i) + " "); System.out.println();}
+			while (rs.next()) {for (int i = 1; i <= 2; i++) { System.out.print(rs.getString(i) + " "); } System.out.println();}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
