@@ -19,7 +19,7 @@ public class AddController {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://mainapp-mysql:3306/", "userhKP", "ILweMo3x");
 			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery("select * from people;");
+			ResultSet rs = st.executeQuery("use workspace; select * from people;");
 			while (rs.next()) {for (int i = 1; i <= 2; i++) System.out.print(rs.getString(i) + " "); System.out.println();}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
