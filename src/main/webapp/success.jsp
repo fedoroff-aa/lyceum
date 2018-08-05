@@ -10,5 +10,6 @@
 <p><%= request.getAttribute("f1") %> </p>
 <p>Hello</p>
 <p>From edits</p>
+<p>From edits 2</p>
 </body>
 </html>
