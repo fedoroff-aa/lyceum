@@ -17,7 +17,7 @@ public class AddController {
 		System.out.println("Hello from servlet!!!");
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/workspace", "userhKP", "ILweMo3x");
+			Connection con = DriverManager.getConnection("jdbc:mysql://mainapp-mysql:3306/", "userhKP", "ILweMo3x");
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery("select * from people;");
 			while (rs.next()) {for (int i = 1; i <= 2; i++) System.out.print(rs.getString(i) + " "); System.out.println();}
