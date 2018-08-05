@@ -17,9 +17,9 @@ public class AddController {
 		System.out.println("Hello from servlet!!!");
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://mainapp-mysql:3306/", "userhKP", "ILweMo3x");
+			Connection con = DriverManager.getConnection("jdbc:mysql://mainapp-mysql-1-l2zjm:3306/workspace", "userhKP", "ILweMo3x");
 			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery("use workspace; select * from people;");
+			ResultSet rs = st.executeQuery("select * from people;");
 			while (rs.next()) {for (int i = 1; i <= 2; i++) System.out.print(rs.getString(i) + " "); System.out.println();}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
