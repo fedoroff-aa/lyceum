@@ -6,9 +6,9 @@
     <session-factory>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/workspace</property>
-        <property name="hibernate.connection.username">root</property> 
+        <property name="hibernate.connection.username">userhKP</property> 
         <!-- userhKP -->
-        <property name="hibernate.connection.password">faa252004</property>
+        <property name="hibernate.connection.password">ILweMo3x</property>
         <!-- ILweMo3x -->
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
         <property name="hbm2ddl.auto">update</property>
