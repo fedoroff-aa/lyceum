@@ -9,6 +9,12 @@
 	http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context-2.5.xsd">
-	<ctx:annotation-config></ctx:annotation-config>
-	<ctx:component-scan base-package="info.forallactivities"></ctx:component-scan>
+	<ctx:annotation-config/>
+	<ctx:component-scan base-package="info.forallactivities"/>
+	
+	<mvc:annotation-driven/>
+	<mvc:resources location="/webres/css/" mapping="/webres/css/**"/>
+	<mvc:resources location="/webres/img/" mapping="/webres/img/**"/>
+	<mvc:resources location="/webres/js/" mapping="/webres/js/**"/>
+	<mvc:resources location="/webapp/" mapping="/webapp/**"/>
 </beans>
