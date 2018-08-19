@@ -1,6 +1,7 @@
 package info.forallactivities;
 
 import java.util.List;
+import java.util.Properties;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -16,17 +17,24 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class AddController {
 	@RequestMapping(value = "/make", method = RequestMethod.POST)
 	public @ResponseBody List<News> make(@RequestBody Search search) {
+		
+		Properties prop = new Properties();
+		prop.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
+		prop.setProperty("hibernate.connection.url", "jdbc:mysql://172.30.234.118:3306/workspace");
+		prop.setProperty("hibernate.connection.username", "userhKP");
+		prop.setProperty("hibernate.connection.password", "ILweMo3x");
+		prop.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
+		prop.setProperty("hbm2ddl.auto", "update");
+		
+		
 		System.out.println(search.getId());
-
-		Configuration conf = new Configuration().configure("/hibernate.cfg.xml").addAnnotatedClass(News.class);
+		Configuration conf = new Configuration().addProperties(prop).addAnnotatedClass(News.class);
 		ServiceRegistry reg = new StandardServiceRegistryBuilder().applySettings(conf.getProperties()).build();
 		SessionFactory sf = conf.buildSessionFactory(reg);
 		Session session = sf.openSession();
