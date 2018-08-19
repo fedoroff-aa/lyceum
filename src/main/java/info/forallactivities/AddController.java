@@ -26,7 +26,7 @@ public class AddController {
 	public @ResponseBody List<News> make(@RequestBody Search search) {
 		System.out.println(search.getId());
 
-		Configuration conf = new Configuration().configure().addAnnotatedClass(News.class);
+		Configuration conf = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(News.class);
 		ServiceRegistry reg = new StandardServiceRegistryBuilder().applySettings(conf.getProperties()).build();
 		SessionFactory sf = conf.buildSessionFactory(reg);
 		Session session = sf.openSession();
