@@ -15,7 +15,7 @@
 <link href="https://fonts.googleapis.com/css?family=Domine" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Merienda" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet">
 
 <link href="https://fonts.googleapis.com/css?family=Molengo" rel="stylesheet">
 

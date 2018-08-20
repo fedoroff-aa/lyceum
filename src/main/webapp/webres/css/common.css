@@ -70,8 +70,8 @@
 		justify-content: center;
 		word-wrap: break-word;
 		color: rgb(240, 60, 0);
-		font-weight: 500;
-		font-family: 'Audiowide', cursive;
+		font-weight: 700;
+		font-family: 'Libre Baskerville', serif;
 		}
 	.top-item:hover {
 		cursor: pointer;
@@ -289,6 +289,7 @@
 		padding: 0.5em;
 		font-size: 1.8em;
 		color: white;
+		font-family: 'Ubuntu Condensed', sans-serif;
 	}
 	.text_l {
 		text-align: left;
@@ -381,9 +382,6 @@
 	@media screen and (min-width: 1600px) {
 		#header_text{
 			font-size: 4.8em;
-		}
-		html {
-			background: url('../img/back_full.jpg') no-repeat center center fixed; 
 		}
 		.news_hdr{font-size: 2.8em;}
 		.news_text{font-size: 2.3em;}

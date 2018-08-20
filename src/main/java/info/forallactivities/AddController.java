@@ -23,18 +23,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class AddController {
 	@RequestMapping(value = "/make", method = RequestMethod.POST)
 	public @ResponseBody List<News> make(@RequestBody Search search) {
-		
-		Properties prop = new Properties();
-		prop.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
-		prop.setProperty("hibernate.connection.url", "jdbc:mysql://172.30.234.118:3306/workspace");
-		prop.setProperty("hibernate.connection.username", "userhKP");
-		prop.setProperty("hibernate.connection.password", "ILweMo3x");
-		prop.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
-		prop.setProperty("hbm2ddl.auto", "update");
-		
-		
 		System.out.println(search.getId());
-		Configuration conf = new Configuration().addProperties(prop).addAnnotatedClass(News.class);
+		Configuration conf = new Configuration().addProperties(forworkspace_con()).addAnnotatedClass(News.class);
 		ServiceRegistry reg = new StandardServiceRegistryBuilder().applySettings(conf.getProperties()).build();
 		SessionFactory sf = conf.buildSessionFactory(reg);
 		Session session = sf.openSession();
@@ -54,5 +44,19 @@ public class AddController {
 		sf.close();
 		reg.close();
 		return news;
+	}
+	
+	public Properties forworkspace_con() {
+		Properties prop = new Properties();
+		prop.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
+		//jdbc:mysql://172.30.234.118:3306/workspace - sql url on openshift
+		prop.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/workspace");
+		// userhKP - user on opeshift sql
+		prop.setProperty("hibernate.connection.username", "root");
+		// ILweMo3x - password on openshift sql
+		prop.setProperty("hibernate.connection.password", "faa252004");
+		prop.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
+		prop.setProperty("hbm2ddl.auto", "update");
+		return prop;
 	}
 }
