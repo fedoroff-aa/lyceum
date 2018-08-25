@@ -1,3 +1,4 @@
+var stopqueries = false;
 $(document).ready( function(){
 		var toserver = {};
 		toserver["id"] = 0;
@@ -6,10 +7,11 @@ $(document).ready( function(){
 });
 	
 function req(toserver) {
+	if (!stopqueries) {
 	$.ajax({
 		type: "POST",
 		contentType: "application/json",
-		url: "./make",
+		url: "news",
 		data: JSON.stringify(toserver),
 		dataType: 'json',
 		timeout: 600000,
@@ -19,8 +21,10 @@ function req(toserver) {
 				$.each(fromserver, function(key, value) {
 					var mainDiv = $('#update_news');
 					
-					var contentDiv = $('<div>').addClass(
-							'newsinner').appendTo(mainDiv);
+					var contentDiv = $('<div>')
+						.addClass('newsinner')
+						.attr('nid', value.nid)
+						.appendTo(mainDiv);
 					
 					$('<span>')
 						.addClass('news_hdr')
@@ -30,7 +34,7 @@ function req(toserver) {
 					
 					$('<span>')
 					.addClass('clearme news_text')
-					.text(value.text)
+					.html(value.content)
 					.appendTo(contentDiv);
 					
 					$('<span>')
@@ -39,19 +43,22 @@ function req(toserver) {
 					.appendTo(contentDiv);
 				});
 				
-				$('html, body').animate({
-					scrollTop : $('#req_more').offset().top
-				}, 1000);
+				var lastid = fromserver[fromserver.length - 1].nid;
 				
-				return toserver["id"] = fromserver[fromserver.length - 1].nid;
+				$('html, body').animate({
+					scrollTop : $(".news_hdr[nid='"+lastid+"'").offset().top-50
+				}, 500);
+				console.log(lastid);
+				return toserver["id"] = lastid;
 			} else {
 				$('#req_more').addClass('disable-elem');
-				
 				$('#req_more').text("No news left");
+				stopqueries = true;
 			}
 		},
 		error : function(e) {
 			console.log(e);
 		}
 	});
+	}
 }

@@ -15,7 +15,7 @@
 <link href="https://fonts.googleapis.com/css?family=Domine" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Merienda" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
 
 <link href="https://fonts.googleapis.com/css?family=Molengo" rel="stylesheet">
 
@@ -35,20 +35,28 @@
 	rel="stylesheet" />
 </head>
 <body>
-	<div id="forback">
-	</div>
 	<div id="logo-top" class="logo_top">
 		<div id="logo_common">
-			<div id="header_text">Info system of School 1502 at MPEI</div>
-			<div id="logo_img">
+			<div id="header_text">Инфо-система Школы 1502 при МЭИ</div>	
+			<div id="logo_img_mmid">
 				<img alt="" src="./webres/img/logo.jpg" id="logo" />
 			</div>
 		</div>
 	</div>
-	<div id="container-top" class="top-container" align="center">
+	<div class="menu_bar_toggle">
+		<div id="logo_img">
+				<img alt="" src="./webres/img/logo.jpg" id="logo" />
+		</div>
+		<div class="container_toggle">
+			<span id="f_stripe" class="stripe"></span>
+			<span id="s_stripe" class="stripe"></span>
+			<span id="t_stripe" class="stripe"></span>
+		</div>
+	</div>
+	<div id="container-top" class="top-container menu_hide" align="center">
 		<div class="top-item" id="main_p">
-			<div class="top-item-in" onclick="location.href = '#'">Main</div>
-			<div class="menu_in_c">
+			<div class="top-item-in">Main</div>
+			<div class="menu_hide">
 				<div class="top-item_in" onclick="location.href = '#news'">News</div>
 				<div class="top-item_in" onclick="javascript:on_main_click()">Contacts</div>
 			</div>
@@ -57,7 +65,7 @@
 		<div class="top-item" id="educ_p">
 			<div class="top-item-in" onclick="location.href = '#educ'">Education
 				process</div>
-			<div class="menu_in_c">
+			<div class="menu_hide">
 				<div class="top-item_in" onclick="location.href = '#nihuya'">Main2</div>
 				<div class="top-item_in">Main3</div>
 				<div class="top-item_in">Main4</div>
@@ -67,7 +75,7 @@
 		<div class="top-item" id="extra_a">
 			<div class="top-item-in" onclick="location.href = '#extra'">Extra
 				activties</div>
-			<div class="menu_in_c">
+			<div class="menu_hide">
 				<div class="top-item_in" onclick="location.href = '#nihuya'">Main2</div>
 				<div class="top-item_in">Main3</div>
 				<div class="top-item_in">Main4</div>
@@ -77,13 +85,13 @@
 		<div class="top-item" id="for_ent">
 			<div class="top-item-in" onclick="location.href = '#for_e'">For
 				entrants</div>
-			<div class="menu_in_c">
+			<div class="menu_hide">
 				<div class="top-item_in" onclick="location.href = '#nihuya'">Main2</div>
 				<div class="top-item_in">Main3</div>
 				<div class="top-item_in">Main4</div>
 			</div>
 		</div>
-		<div class="toggle-to-top">
+		<div class="toggle-to-top" id="ttt_mb">
 			<div class="toggle-inner">
 				<span class="marker-left"></span>
 				<span class="marker-right"></span>
@@ -126,6 +134,13 @@
 			<div id="update_news"></div>
 			<div id="req_more">Load more</div>
 		</div>
+	</div>
+	<div class="toggle-to-top" id="ttt_small">
+			<div class="toggle-inner">
+				<span class="marker-left"></span>
+				<span class="marker-right"></span>
+				<span class="marker-center"></span>
+			</div>
 	</div>
 </body>
 </html>
