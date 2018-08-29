@@ -7,13 +7,13 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class Search {
 	private long id;
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy HH:mm", timezone="GMT+3")
-	private Date date;
+	private String date;
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 

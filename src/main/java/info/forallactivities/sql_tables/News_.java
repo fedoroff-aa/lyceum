@@ -12,6 +12,6 @@ public abstract class News_ {
 	public static volatile SingularAttribute<News, Long> nid;
 	public static volatile SingularAttribute<News, String> header;
 	public static volatile SingularAttribute<News, String> content;
-	public static volatile SingularAttribute<News, Date> date;
+	public static volatile SingularAttribute<News, String> date;
 
 }
