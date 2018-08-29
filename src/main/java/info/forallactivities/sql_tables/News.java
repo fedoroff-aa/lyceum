@@ -23,17 +23,17 @@ public class News {
 	@Column(columnDefinition="longtext")
 	private String content;
 	@DateTimeFormat(pattern="dd-MM-yyyy HH:mm")
-	private Date date;
+	private String date;
 	
 	public News(){}
-	public News(Long nid, String header, String content, Date date) {
+	public News(Long nid, String header, String content, String date) {
 		this.nid = nid;
 		this.header = header;
 		this.content = content;
 		this.date = date;
 	}
 	
-	public News(Long nid, String header, Date date) {
+	public News(Long nid, String header, String date) {
 		this.nid = nid;
 		this.header = header;
 		this.date = date;
@@ -68,11 +68,10 @@ public class News {
 	}
 
 	public String getDate() {
-		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
-		return formatter.format(date).toString();
+		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
