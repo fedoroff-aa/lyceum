@@ -204,7 +204,7 @@ public class NAC {
 	public Configuration forworkspace_conf(Class<?> c) {
 		Properties prop = new Properties();
 		prop.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
-		prop.setProperty("hibernate.connection.url", "mysql://mysql:3306/workspace");
+		prop.setProperty("hibernate.connection.url", "jdbc:mysql://mysql:3306/workspace");
 		prop.setProperty("hibernate.connection.username", "commonuser");
 		prop.setProperty("hibernate.connection.password", "faa252004");
 		prop.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
