@@ -205,7 +205,7 @@ public class NAC {
 		Properties prop = new Properties();
 		prop.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
 		//jdbc:mysql://172.30.234.118:3306/workspace - sql url on openshift
-		prop.setProperty("hibernate.connection.url", "jdbc:mysql://172.31.22.14:3306/workspace");
+		prop.setProperty("hibernate.connection.url", "jdbc:mysql://172.30.234.118:3306/workspace");
 		// userhKP - user on opeshift sql
 		prop.setProperty("hibernate.connection.username", "userhKP");
 		// ILweMo3x - password on openshift sql
