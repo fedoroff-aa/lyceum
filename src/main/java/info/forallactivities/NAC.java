@@ -204,12 +204,9 @@ public class NAC {
 	public Configuration forworkspace_conf(Class<?> c) {
 		Properties prop = new Properties();
 		prop.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
-		//jdbc:mysql://172.30.234.118:3306/workspace - sql url on openshift
-		prop.setProperty("hibernate.connection.url", "jdbc:mysql://172.30.234.118:3306/workspace");
-		// userhKP - user on opeshift sql
-		prop.setProperty("hibernate.connection.username", "userhKP");
-		// ILweMo3x - password on openshift sql
-		prop.setProperty("hibernate.connection.password", "ILweMo3x");
+		prop.setProperty("hibernate.connection.url", "mysql://mysql:3306/workspace");
+		prop.setProperty("hibernate.connection.username", "commonuser");
+		prop.setProperty("hibernate.connection.password", "faa252004");
 		prop.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
 		prop.setProperty("hbm2ddl.auto", "update");
 		Configuration conf = new Configuration().addProperties(prop).addAnnotatedClass(c);

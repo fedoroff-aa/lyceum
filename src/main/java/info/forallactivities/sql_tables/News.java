@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
@@ -18,8 +20,9 @@ public class News {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long nid;
 	private String header;
+	@Column(columnDefinition="longtext")
 	private String content;
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy HH:mm", timezone="GMT+3")
+	@DateTimeFormat(pattern="dd-MM-yyyy HH:mm")
 	private Date date;
 	
 	public News(){}
