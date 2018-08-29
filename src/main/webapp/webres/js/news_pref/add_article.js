@@ -11,7 +11,7 @@ $(document).ready(function(){
 		console.log(toserver_full);
 		$.ajax({
 			type: "POST",
-			contentType: "application/json",
+			contentType: "application/json;charset=utf-8",
 			url: "mpanel_aur_news",
 			data: JSON.stringify(toserver_full),
 			dataType: 'json',

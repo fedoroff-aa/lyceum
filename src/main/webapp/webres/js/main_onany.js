@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	$.ajax({
 		type: "POST",
-		contentType: "application/json",
+		contentType: "application/json; charset=utf-8",
 		url: "menu_items",
 		dataType: 'json',
 		timeout: 600000,

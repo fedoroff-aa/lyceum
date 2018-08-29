@@ -10,7 +10,7 @@ function req(toserver) {
 	if (!stopqueries) {
 	$.ajax({
 		type: "POST",
-		contentType: "application/json",
+		contentType: "application/json;charset=utf-8",
 		url: "news",
 		data: JSON.stringify(toserver),
 		dataType: 'json',

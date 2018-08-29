@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	$.ajax({
 		type: "POST",
-		contentType: "application/json",
+		contentType: "application/json; charset=utf-8",
 		url: "mpanel_getns", //get list of articles
 		dataType: 'json',
 		timeout: 600000,
@@ -28,7 +28,7 @@ $(document).ready(function(){
 		console.log(toserver);
 		$.ajax({
 			type: "POST",
-			contentType: "application/json",
+			contentType: "application/json; charset=utf-8",
 			url: "mpanel_getnf", //get specific article by id
 			data: JSON.stringify(toserver),
 			dataType: 'json',
@@ -59,7 +59,7 @@ $(document).ready(function(){
 		console.log(toserver_full);
 		$.ajax({
 			type: "POST",
-			contentType: "application/json",
+			contentType: "application/json;charset=UTF-8",
 			url: "mpanel_aur_news", //get list of articles
 			data: JSON.stringify(toserver_full),
 			dataType: 'json',
