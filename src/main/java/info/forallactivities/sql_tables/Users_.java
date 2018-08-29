@@ -1,4 +1,4 @@
-package info.forallactivities;
+package info.forallactivities.sql_tables;
 
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;

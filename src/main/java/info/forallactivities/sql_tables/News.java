@@ -1,4 +1,4 @@
-package info.forallactivities;
+package info.forallactivities.sql_tables;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

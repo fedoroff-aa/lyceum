@@ -1,4 +1,29 @@
 $(document).ready(function() {
+	$.ajax({
+		type: "POST",
+		contentType: "application/json",
+		url: "menu_items",
+		dataType: 'json',
+		timeout: 600000,
+		success: function(fromserver) {
+			$.each(fromserver, function(key,value){
+				parent_dmenu = $('.menu_bar[mid="'+value.mid+'"]');
+				var el = $('<div>')
+					.text(value.content)
+					.addClass('top-item_in')
+					.attr('sid',value.sid)
+					.appendTo(parent_dmenu);
+				el.click(function(){
+					$('#sid_f').val(el.attr('sid'));
+					$('#mid_f').val(value.mid);
+					$('#article_f').submit();
+				});
+			});
+		},
+		error : function(e) {
+			console.log(e);
+		}
+	});
 	
 	$cont_top = $('#container-top');
 	$cont_wrapper = $('#contacts_outer');
@@ -6,6 +31,7 @@ $(document).ready(function() {
 	
 	$(window).scroll(top_menu_fix);
 	$(window).resize(top_menu_fix);
+	$(window).resize(hide_menu);
 	top_menu_fix();
 	/* to fix menu bar at top */
 	function top_menu_fix(){
@@ -34,6 +60,10 @@ $(document).ready(function() {
 			$('#wrap').css({'margin-top' : '35px'});
 			$cont_top.css({});
 		}
+	}
+	
+	function hide_menu(){
+		$('.menu_hide').removeClass('menu_in');
 	}
 	/* check if it's time to hold menu bar fixed at top 
 	 * l - lower
@@ -85,6 +115,7 @@ $(document).ready(function() {
 		}, 800);
 		if (!isSmallScreen() && !isMidScreen())$('#container-top').slideUp(700).slideDown(150);
 	}
+	
 	/* menu bar with img and toggle */
 	$('.container_toggle').click(function(){
 		if (isSmallScreen()) menu_bar_toggle();
@@ -122,7 +153,3 @@ $(document).ready(function() {
 		else if ($(document).scrollTop() > $cont_top.height() && !isMidScreen() && !isSmallScreen()){scroll_to_top();}
 	});
 });
-//cause global
-function on_main_click(){
-	alert("main");
-}

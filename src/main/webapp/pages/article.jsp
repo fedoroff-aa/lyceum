@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
 <title>Don't forget to insert</title>
-<link rel="stylesheet" href="./webres/css/main.css" type="text/css" />
+<link rel="stylesheet" href="./webres/css/article.css" type="text/css" />
 
 <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed" rel="stylesheet">
@@ -25,10 +25,12 @@
 <script src="https://code.jquery.com/jquery-3.3.1.js"
 	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
 	crossorigin="anonymous"></script>
-<script type="text/javascript" src="./webres/js/req_more_news.js"></script>
 <script type="text/javascript" src="./webres/js/main_onany.js"></script>
+<script type="text/javascript" src="./webres/js/article.js"></script>
 
 <script type="text/javascript">
+var sid_mav = "${sid}";
+var mid_mav = "${mid}";
 </script>
 
 <link href="https://fonts.googleapis.com/css?family=Exo+2"
@@ -55,10 +57,11 @@
 	
 	<div id="container-top" class="top-container menu_hide" align="center">
 		<div class="top-item" id="main_p">
-			<div class="top-item-in">Главная</div>
+			<div class="top-item-in" id="tomain">Главная</div>
+			<div class="top-item-in" onclick="location.href = '/'" id="tomainh">Главная</div>
 			<div class="menu_hide">
-				<div class="top-item_in" onclick="location.href = '#news'">Новости</div>
-				<div class="top-item_in" onclick="location.href = '#mobile_contacts'">Контакты</div>
+				<div class="top-item_in" onclick="location.href = '/'">Новости</div>
+				<div class="top-item_in" onclick="location.href = '/#mobile_contacts'">Контакты</div>
 			</div>
 		</div>
 
@@ -119,8 +122,9 @@
 		</div>
 		
 		<div class="wrap-blocks news-container">
-			<div id="update_news"></div>
-			<div id="req_more">Load more</div>
+			<div id="update_news">
+				<div class="newsinner"></div>
+			</div>
 		</div>
 	</div>
 	<div class="toggle-to-top" id="ttt_small">

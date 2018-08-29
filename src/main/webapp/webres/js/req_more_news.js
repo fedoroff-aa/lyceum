@@ -3,7 +3,7 @@ $(document).ready( function(){
 		var toserver = {};
 		toserver["id"] = 0;
 		toserver["id"] = req(toserver);
-		$('#req_more').click(function(){toserver["id"] = req(toserver);});
+		$('#req_more').click(function(){toserver["date"] = req(toserver);});
 });
 	
 function req(toserver) {
@@ -24,6 +24,7 @@ function req(toserver) {
 					var contentDiv = $('<div>')
 						.addClass('newsinner')
 						.attr('nid', value.nid)
+						.attr('date', value.date)
 						.appendTo(mainDiv);
 					
 					$('<span>')
@@ -32,24 +33,24 @@ function req(toserver) {
 						.text(value.header)
 						.appendTo(contentDiv);
 					
-					$('<span>')
+					var cont = $('<span>')
 					.addClass('clearme news_text')
 					.html(value.content)
 					.appendTo(contentDiv);
-					
+
 					$('<span>')
 					.addClass('clearb news_date')
 					.text(value.date)
 					.appendTo(contentDiv);
 				});
 				
-				var lastid = fromserver[fromserver.length - 1].nid;
+				var lastdate = fromserver[fromserver.length - 1].date;
 				
 				$('html, body').animate({
-					scrollTop : $(".news_hdr[nid='"+lastid+"'").offset().top-50
+					scrollTop : $(".newsinner[date='"+lastdate+"']").offset().top-50
 				}, 500);
-				console.log(lastid);
-				return toserver["id"] = lastid;
+				console.log(lastdate);
+				return toserver["date"] = lastdate;
 			} else {
 				$('#req_more').addClass('disable-elem');
 				$('#req_more').text("No news left");

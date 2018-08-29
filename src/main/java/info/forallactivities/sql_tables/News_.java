@@ -1,4 +1,6 @@
-package info.forallactivities;
+package info.forallactivities.sql_tables;
+
+import java.util.Date;
 
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
@@ -10,6 +12,6 @@ public abstract class News_ {
 	public static volatile SingularAttribute<News, Long> nid;
 	public static volatile SingularAttribute<News, String> header;
 	public static volatile SingularAttribute<News, String> content;
-	public static volatile SingularAttribute<News, String> date;
+	public static volatile SingularAttribute<News, Date> date;
 
 }

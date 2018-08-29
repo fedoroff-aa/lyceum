@@ -1,14 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" isELIgnored="false"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="ISO-8859-1">
+	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<style type="text/css">
 		body, html {
-			height: 100%;
 			width: 100%;
 			margin: 0;
 			padding: 0;
@@ -16,13 +15,12 @@
 		}
 		.wrapper {
 			width: 100%;
-			height: 100%;
 			display: flex;
 			align-items: center;
 			justify-content: center;
 		}		
 		.inner {
-			height: 50%;
+			margin: 2em 0;
 			padding: 2em;
 			display: flex;
 			flex-direction: column;
@@ -60,10 +58,10 @@
 				<input type="hidden" name="logout" value="1">
 				<input type="submit" value="Log out">
 			</form>
-			<p>News section</p>
-			<a href="/mpanel_addn">Add article</a>
-			<a href="/mpanel_updn">Update article</a>
-			<a href="/mpanel_rmn">Remove article</a>
+			<p>Новости</p>
+			<a href="/mpanel_addn">Добавить новость</a>
+			<a href="/mpanel_updn">Изменить новость</a>
+			<a href="/mpanel_rmn">Удалить новость</a>
 		</div>
 	</div>
 </body>

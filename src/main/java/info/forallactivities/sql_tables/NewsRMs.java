@@ -1,4 +1,4 @@
-package info.forallactivities;
+package info.forallactivities.sql_tables;
 
 //class to support rm request from mainpanel
 public class NewsRMs {

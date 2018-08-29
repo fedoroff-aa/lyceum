@@ -8,7 +8,11 @@
 <script src="https://code.jquery.com/jquery-3.3.1.js"
 	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
 	crossorigin="anonymous"></script>
+	
 <script type="text/javascript" src="../webres/js/news_pref/update_article.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
 	<style type="text/css">
 		body, html {
 			width: 100%;
@@ -23,7 +27,7 @@
 			align-items: center;
 			justify-content: center;
 		}
-		.inner {
+		.req_article_list {
 			display: flex;
 			width: 80%;
 			flex-direction: column;
@@ -64,8 +68,7 @@
 		
 		
 		.select_article {
-			position: relative;
-			display:block;
+			width: 50%;
 			padding: 0.25em 0.25em;
 			font-size: 1.5em;
 			margin-top: 1em;
@@ -110,7 +113,7 @@
 <div class="wrapper">
 		<div class="inner">
 			<div class="req_article_list">
-				<select class="select_article">
+				<select class="select_article js-example-responsive">
 				</select>
 				<div class="button_askforln">Изменить</div>
 			</div>

@@ -10,6 +10,7 @@ public class AddRes extends WebMvcConfigurerAdapter{
 		registry.addResourceHandler("/webres/css/**").addResourceLocations("/webres/css/");
 		registry.addResourceHandler("/webres/img/**").addResourceLocations("/webres/img/");
 		registry.addResourceHandler("/webres/js/**").addResourceLocations("/webres/js/");
-		}
+		registry.addResourceHandler("/pages/articles/**").addResourceLocations("/pages/articles/");
+	}
 	
 }

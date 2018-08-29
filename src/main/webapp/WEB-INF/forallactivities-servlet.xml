@@ -16,5 +16,6 @@
 	<mvc:resources location="/webres/css/" mapping="/webres/css/**"/>
 	<mvc:resources location="/webres/img/" mapping="/webres/img/**"/>
 	<mvc:resources location="/webres/js/" mapping="/webres/js/**"/>
+	<mvc:resources location="/pages/articles/" mapping="/pages/articles/**"/>
 	<mvc:resources location="/webapp/" mapping="/webapp/**"/>
 </beans>

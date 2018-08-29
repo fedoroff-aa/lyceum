@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	
 	$.ajax({
 		type: "POST",
 		contentType: "application/json",
@@ -14,6 +15,7 @@ $(document).ready(function(){
 						.text(value.header + " " + value.date)
 						.appendTo(sel_article);
 				});
+				$(".js-example-responsive").select2();
 			}
 		},
 		error : function(e) {

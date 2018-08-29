@@ -1,5 +1,6 @@
 package info.forallactivities;
 
+import java.io.File;
 import java.util.List;
 import java.util.Properties;
 
@@ -7,8 +8,9 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import javax.persistence.criteria.Selection;
+import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.io.FileUtils;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -26,31 +28,36 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import info.forallactivities.sql_tables.AddArticle;
+import info.forallactivities.sql_tables.Menu_item;
+import info.forallactivities.sql_tables.News;
+import info.forallactivities.sql_tables.NewsRMs;
+import info.forallactivities.sql_tables.News_;
+import info.forallactivities.sql_tables.Search;
+import info.forallactivities.sql_tables.Users;
+import info.forallactivities.sql_tables.Users_;
+
+//News And Articles Controller
 @Controller
 @SessionAttributes(value = "user")
-public class AddController {
-	@RequestMapping(value = "/news", method = RequestMethod.POST)
-	public @ResponseBody List<News> news(@RequestBody Search search) {
-		ServiceRegistry reg = new StandardServiceRegistryBuilder().applySettings(forworkspace_conf(News.class).getProperties()).build();
-		SessionFactory sf = forworkspace_conf(News.class).buildSessionFactory(reg);
-		Session session = sf.openSession();
-		CriteriaBuilder cb = session.getCriteriaBuilder();
-
-		CriteriaQuery<News> criteria = cb.createQuery(News.class);
-		Root<News> contactRoot = criteria.from(News.class);
-		criteria.orderBy(cb.desc(contactRoot.get(News_.date)));
-		if (search.getId() == 0) {
-		} else {
-			Predicate p1 = cb.lessThan(contactRoot.get(News_.nid), search.getId());
-			criteria.where(p1);
-		}
-		criteria.select(contactRoot);
-		List<News> news = session.createQuery(criteria).setMaxResults(2).getResultList();
-		session.close();
-		sf.close();
-		reg.close();
-		return news;
+public class NAC {
+	
+	/*	
+	 * 	ARTICLE CONTROLLERS
+	 */
+	@RequestMapping(value = "/add_article", method = RequestMethod.POST)
+	public @ResponseBody String add_article(@RequestBody AddArticle aa, HttpServletRequest h) {
+		try {
+			File f = new File(h.getSession().getServletContext().getRealPath("/pages/articles"), aa.getPagename());
+			FileUtils.writeStringToFile(f, aa.getPagecontent());
+		} catch (Exception e) {e.printStackTrace();}
+		return "";
+		
 	}
+	
+	/*	
+	 * 	NEWS CONTROLLERS
+	 */
 	
 	public News getNewsItem(long nid) {
 		ServiceRegistry reg = new StandardServiceRegistryBuilder().applySettings(forworkspace_conf(News.class).getProperties()).build();
@@ -72,6 +79,24 @@ public class AddController {
 	}
 	// n = news
 	
+	@RequestMapping(value="/menu_items", method=RequestMethod.POST)
+	public @ResponseBody List<Menu_item> menu_items(){
+		ServiceRegistry reg = new StandardServiceRegistryBuilder().applySettings(forworkspace_conf(Menu_item.class).getProperties()).build();
+		SessionFactory sf = forworkspace_conf(Menu_item.class).buildSessionFactory(reg);
+		Session session = sf.openSession();
+		CriteriaBuilder cb = session.getCriteriaBuilder();
+		
+		CriteriaQuery<Menu_item> criteria = cb.createQuery(Menu_item.class);
+		Root<Menu_item> contactRoot = criteria.from(Menu_item.class);
+		criteria.select(contactRoot);
+		List<Menu_item> menu_items = session.createQuery(criteria).getResultList();
+		
+		session.close();
+		sf.close();
+		reg.close();
+		return menu_items;
+	}
+		
 	@RequestMapping("/mpanel_addn")
 	public ModelAndView mpannel_add() {
 		return new ModelAndView("/pages/mpanel/news_pref/add_news.jsp");
@@ -169,14 +194,14 @@ public class AddController {
         }
         return modelAndView;
     }
-	
+
 	@ModelAttribute("user")
 	public Users createUser(){
 		return new Users("","");
 	}
 	
 	//configuration for workspace to connect
-	public Configuration forworkspace_conf(Class c) {
+	public Configuration forworkspace_conf(Class<?> c) {
 		Properties prop = new Properties();
 		prop.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
 		//jdbc:mysql://172.30.234.118:3306/workspace - sql url on openshift
