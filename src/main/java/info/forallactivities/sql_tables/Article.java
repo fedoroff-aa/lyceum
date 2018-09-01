@@ -1,32 +1,30 @@
 package info.forallactivities.sql_tables;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name="article")
 public class Article {
-	@Id
-	@Column(name="sid", unique = true, nullable = false)
-	private long sid;
-	private String article_content;
+	private String pagename;
+	private String pagecontent;
+	
+	public Article(String pagename, String pagecontent) {
+		this.pagename = pagename;
+		this.pagecontent = pagecontent;
+	}
+	public Article(String pagename) {
+		this.pagename = pagename;
+	}
 	public Article() {}
-	public Article(long sid, String article_content) {
-		this.sid = sid;
-		this.article_content = article_content;
+	
+	public String getPagename() {
+		return pagename;
 	}
-	public long getSid() {
-		return sid;
+	public void setPagename(String pagename) {
+		this.pagename = pagename;
 	}
-	public void setSid(long sid) {
-		this.sid = sid;
+	public String getPagecontent() {
+		return pagecontent;
 	}
-	public String getArticle_content() {
-		return article_content;
+	public void setPagecontent(String pagecontent) {
+		this.pagecontent = pagecontent;
 	}
-	public void setArticle_content(String article_content) {
-		this.article_content = article_content;
-	}
+	
+	
 }

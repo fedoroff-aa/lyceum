@@ -1,6 +1,8 @@
 package info.forallactivities;
 
 import java.io.File;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Properties;
 
@@ -28,7 +30,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
-import info.forallactivities.sql_tables.AddArticle;
+import info.forallactivities.sql_tables.Article;
 import info.forallactivities.sql_tables.Menu_item;
 import info.forallactivities.sql_tables.News;
 import info.forallactivities.sql_tables.NewsRMs;
@@ -42,17 +44,104 @@ import info.forallactivities.sql_tables.Users_;
 @SessionAttributes(value = "user")
 public class NAC {
 	
+	@RequestMapping(value="/menu_items", method=RequestMethod.POST)
+	public @ResponseBody List<Menu_item> menu_items(){
+		ServiceRegistry reg = new StandardServiceRegistryBuilder().applySettings(forworkspace_conf(Menu_item.class).getProperties()).build();
+		SessionFactory sf = forworkspace_conf(Menu_item.class).buildSessionFactory(reg);
+		Session session = sf.openSession();
+		CriteriaBuilder cb = session.getCriteriaBuilder();
+		
+		CriteriaQuery<Menu_item> criteria = cb.createQuery(Menu_item.class);
+		Root<Menu_item> contactRoot = criteria.from(Menu_item.class);
+		criteria.select(contactRoot);
+		List<Menu_item> menu_items = session.createQuery(criteria).getResultList();
+		
+		session.close();
+		sf.close();
+		reg.close();
+		return menu_items;
+	}
+		
 	/*	
 	 * 	ARTICLE CONTROLLERS
 	 */
-	@RequestMapping(value = "/add_article", method = RequestMethod.POST)
-	public @ResponseBody String add_article(@RequestBody AddArticle aa, HttpServletRequest h) {
-		try {
-			File f = new File(h.getSession().getServletContext().getRealPath("/pages/articles"), aa.getPagename());
-			FileUtils.writeStringToFile(f, aa.getPagecontent());
-		} catch (Exception e) {e.printStackTrace();}
+	//map to page to add articles
+	@RequestMapping("/add_article")
+	public ModelAndView add_article() {
+		return new ModelAndView("/pages/mpanel/articles_pref/add_article.jsp");
+	}
+	
+	//map to page to update articles
+	@RequestMapping("/update_article")
+	public ModelAndView update_article() {
+		return new ModelAndView("/pages/mpanel/articles_pref/update_article.jsp");
+	}
+	
+	//map to page to remove articles
+	@RequestMapping("/remove_article")
+	public ModelAndView remove_article() {
+		return new ModelAndView("/pages/mpanel/articles_pref/remove_article.jsp");
+	}
+	
+	@RequestMapping(value = "/addarticle", method = RequestMethod.POST)
+	public @ResponseBody String addarticle(@ModelAttribute("user") Users user, @RequestBody Article aa, HttpServletRequest h) {
+		boolean isCorrectlDetails = isCorrectUser(user.getName(), user.getPassword());
+		if (isCorrectlDetails) {
+			try {
+				File f = new File(h.getSession().getServletContext().getRealPath("/pages/articles"), aa.getPagename());
+				if (f.exists()) return "such file is already on server";
+				f.createNewFile();
+				FileUtils.writeStringToFile(f, aa.getPagecontent(), StandardCharsets.UTF_8);
+				return "successful";
+			} catch (Exception e) {e.printStackTrace();}
+		} else {return "login details are incorrect or not provided";}
 		return "";
-		
+	}
+	
+	@RequestMapping(value = "/getarticlec", method = RequestMethod.POST)
+	public @ResponseBody Article getarticlecontent(@ModelAttribute("user") Users user, @RequestBody Article aa, HttpServletRequest h) {
+		boolean isCorrectlDetails = isCorrectUser(user.getName(), user.getPassword());
+		if (isCorrectlDetails) {
+			try {
+				File f = new File(h.getSession().getServletContext().getRealPath("/pages/articles"), aa.getPagename());
+				if (f.exists()) {
+					return new Article(null,FileUtils.readFileToString(f, StandardCharsets.UTF_8));
+				}
+				return null;
+			} catch (Exception e) {e.printStackTrace();}
+		} else {return null;}
+		return null;
+	}
+	
+	@RequestMapping(value = "/rmarticle", method = RequestMethod.POST)
+	public @ResponseBody String removearticle(@ModelAttribute("user") Users user, @RequestBody Article aa, HttpServletRequest h) {
+		boolean isCorrectlDetails = isCorrectUser(user.getName(), user.getPassword());
+		if (isCorrectlDetails) {
+			try {
+				File f = new File(h.getSession().getServletContext().getRealPath("/pages/articles"), aa.getPagename());
+				if (f.exists()) {
+					return "successful? "+f.delete();
+				}
+				return "such file doesnot exist";
+			} catch (Exception e) {e.printStackTrace();}
+		} else return "login details are incorrect or not provided";
+		return "";
+	}
+	
+	@RequestMapping(value = "/setarticlec", method = RequestMethod.POST)
+	public @ResponseBody String setarticlecontent(@ModelAttribute("user") Users user, @RequestBody Article aa, HttpServletRequest h) {
+		boolean isCorrectlDetails = isCorrectUser(user.getName(), user.getPassword());
+		if (isCorrectlDetails) {
+			try {
+				File f = new File(h.getSession().getServletContext().getRealPath("/pages/articles"), aa.getPagename());
+				if (f.exists()) {
+					FileUtils.writeStringToFile(f, aa.getPagecontent(), StandardCharsets.UTF_8);
+					return "successful";
+				}
+				return "such file doesnot exist";
+			} catch (Exception e) {e.printStackTrace();}
+		} else return "login details are incorrect or not provided";
+		return "";
 	}
 	
 	/*	
@@ -77,40 +166,22 @@ public class NAC {
 		reg.close();
 		return n;
 	}
-	// n = news
 	
-	@RequestMapping(value="/menu_items", method=RequestMethod.POST)
-	public @ResponseBody List<Menu_item> menu_items(){
-		ServiceRegistry reg = new StandardServiceRegistryBuilder().applySettings(forworkspace_conf(Menu_item.class).getProperties()).build();
-		SessionFactory sf = forworkspace_conf(Menu_item.class).buildSessionFactory(reg);
-		Session session = sf.openSession();
-		CriteriaBuilder cb = session.getCriteriaBuilder();
-		
-		CriteriaQuery<Menu_item> criteria = cb.createQuery(Menu_item.class);
-		Root<Menu_item> contactRoot = criteria.from(Menu_item.class);
-		criteria.select(contactRoot);
-		List<Menu_item> menu_items = session.createQuery(criteria).getResultList();
-		
-		session.close();
-		sf.close();
-		reg.close();
-		return menu_items;
-	}
-		
-	@RequestMapping("/mpanel_addn")
-	public ModelAndView mpannel_add() {
+	//map to page to update news	
+	@RequestMapping("/add_news")
+	public ModelAndView add_news() {
 		return new ModelAndView("/pages/mpanel/news_pref/add_news.jsp");
 	}
 	
-	//map to page to update articles
-	@RequestMapping("/mpanel_updn")
-	public ModelAndView mpannel_upd() {
+	//map to page to update news
+	@RequestMapping("/update_news")
+	public ModelAndView update_news() {
 		return new ModelAndView("/pages/mpanel/news_pref/update_news.jsp");
 	}
 	
-	//map to page to remove articles
-	@RequestMapping("/mpanel_rmn")
-	public ModelAndView mpanel_rm() {
+	//map to page to remove news
+	@RequestMapping("/remove_news")
+	public ModelAndView remove_news() {
 		return new ModelAndView("/pages/mpanel/news_pref/remove_news.jsp");
 	}
 	
@@ -134,7 +205,7 @@ public class NAC {
 		} else { return "error";}
 	}
 	
-	//main panel get full specific article
+	//main panel get full specific item of news
 	@RequestMapping(value = "/mpanel_getnf", method = RequestMethod.POST)
 	public @ResponseBody News mpanel_getnf(@ModelAttribute("user") Users user, @RequestBody Search search) {
 		if (isCorrectUser(user.getName(), user.getPassword())) {
@@ -204,8 +275,8 @@ public class NAC {
 	public Configuration forworkspace_conf(Class<?> c) {
 		Properties prop = new Properties();
 		prop.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
-		prop.setProperty("hibernate.connection.url", "jdbc:mysql://mysql:3306/workspace");
-		prop.setProperty("hibernate.connection.username", "commonuser");
+		prop.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/workspace");
+		prop.setProperty("hibernate.connection.username", "root");
 		prop.setProperty("hibernate.connection.password", "faa252004");
 		prop.setProperty("hibernate.connection.characterEncoding", "utf8");
 		prop.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");

@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	
+	var gotfromserver;
 	$.ajax({
 		type: "POST",
 		contentType: "application/json; charset=utf-8",
@@ -15,7 +15,7 @@ $(document).ready(function() {
 						.val(value.sid)
 						.appendTo(sel_article);
 				});
-				$(".js-example-responsive").select2();
+				$(".select_article").select2();
 			}
 		},
 		error : function(e) {
@@ -23,15 +23,13 @@ $(document).ready(function() {
 		}
 	});
 	
-	$(".button_askforla").click(function(){
-		console.log($('.select_article').val());
+	$(".button_rm").click(function(){
 		toserver = {};
 		toserver["pagename"] = "article_"+$('.select_article').val()+".html";
-		toserver["pagecontent"] = $('#pagecontents').val();
 		$.ajax({
 			type : "POST",
 			contentType : "application/json;charset=utf-8",
-			url : "addarticle",
+			url : "rmarticle",
 			dataType : 'json',
 			data : JSON.stringify(toserver),
 			timeout : 600000,

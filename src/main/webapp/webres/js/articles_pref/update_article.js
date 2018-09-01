@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	
+	var gotfromserver;
 	$.ajax({
 		type: "POST",
 		contentType: "application/json; charset=utf-8",
@@ -15,7 +15,7 @@ $(document).ready(function() {
 						.val(value.sid)
 						.appendTo(sel_article);
 				});
-				$(".js-example-responsive").select2();
+				$(".select_article").select2();
 			}
 		},
 		error : function(e) {
@@ -23,15 +23,38 @@ $(document).ready(function() {
 		}
 	});
 	
-	$(".button_askforla").click(function(){
+	$(".button_get").click(function(){
 		console.log($('.select_article').val());
 		toserver = {};
+		toserver["pagecontent"] = "";
 		toserver["pagename"] = "article_"+$('.select_article').val()+".html";
-		toserver["pagecontent"] = $('#pagecontents').val();
 		$.ajax({
 			type : "POST",
 			contentType : "application/json;charset=utf-8",
-			url : "addarticle",
+			url : "getarticlec",
+			dataType : 'json',
+			data : JSON.stringify(toserver),
+			timeout : 600000,
+			success : function(fromserver) {
+				$('#pagecontents').val(fromserver.pagecontent);
+				gotfromserver = toserver["pagename"];
+				console.log(fromserver);
+			},
+			error : function(e) {
+				console.log(e);
+			}
+		});
+	});
+	
+	$(".button_update").click(function(){
+		console.log($('.select_article').val());
+		toserver = {};
+		toserver["pagecontent"] = $('#pagecontents').val();
+		toserver["pagename"] = gotfromserver;
+		$.ajax({
+			type : "POST",
+			contentType : "application/json;charset=utf-8",
+			url : "setarticlec",
 			dataType : 'json',
 			data : JSON.stringify(toserver),
 			timeout : 600000,

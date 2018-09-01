@@ -25,13 +25,10 @@
 <script src="https://code.jquery.com/jquery-3.3.1.js"
 	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
 	crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+	
 <script type="text/javascript" src="./webres/js/main_onany.js"></script>
 <script type="text/javascript" src="./webres/js/article.js"></script>
-
-<script type="text/javascript">
-var sid_mav = "${sid}";
-var mid_mav = "${mid}";
-</script>
 
 <link href="https://fonts.googleapis.com/css?family=Exo+2"
 	rel="stylesheet" />
@@ -98,18 +95,18 @@ var mid_mav = "${mid}";
 					<div class="contacts">
 						<div id="contacts_inner">
 							<div>Наши контакты</div>
-							<div class="contacts_email" id="main_email">E-mail: <a>1502@edu.mos.ru</a></div>
-							<div class="contacts_email"><a>Public</a> in VK<br></div>
+							<div class="text_s" id="main_email">E-mail: <a class="link_">1502@edu.mos.ru</a></div>
+							<div class="text_s"><a class="link_">Public</a> in VK<br></div>
 							Директор
-							<p class="text_l">Чудов Владимир Львович</p>
-							<div class="contacts_email"><a href="">ChudovVL@edu.mos.ru</a></div>
-							<div class="contacts_tel"><a href="">+7 (495) 300-00-20</a></div>
-							<div class="contacts_tel"><a href="">+7 (965) 340-77-16</a></div>
+							<p class="text_s">Чудов Владимир Львович</p>
+							<a class="link_" href="">ChudovVL@edu.mos.ru</a><br>
+							<a class="link_" href="">+7 (495) 300-00-20</a><br>
+							<a class="link_" href="">+7 (965) 340-77-16</a><br>
 							Секретарь
-							<p class="text_l">Кулагина Нина Валентиновна</p>
-							<div class="contacts_tel"><a href="">+7(495)307-11-61</a></div>
+							<p class="text_s">Кулагина Нина Валентиновна</p>
+							<div><a class="link_ text_s" href="">+7(495)307-11-61</a></div>
 							Адрес
-							<p class="text_l">Москва, улица Молостовых, дом 10А</p>
+							<p class="text_s">Москва, улица Молостовых, дом 10А</p>
 						</div>
 					</div>
 	
@@ -135,8 +132,6 @@ var mid_mav = "${mid}";
 			</div>
 	</div>
 	<form action="article" method="post" id="article_f" style="display:none;">
-		<input type="hidden" id="sid_f" name="sid">
-		<input type="hidden" id="mid_f" name="mid">
 		<input type="submit">
 	</form>
 </body>

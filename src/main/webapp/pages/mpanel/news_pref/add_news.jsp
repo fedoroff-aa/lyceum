@@ -8,7 +8,7 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.js"
 		integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
 		crossorigin="anonymous"></script>
-	<script type="text/javascript" src="../webres/js/news_pref/add_article.js"></script>
+	<script type="text/javascript" src="../webres/js/news_pref/add_news.js"></script>
 	<style type="text/css">
 		
 		body, html {

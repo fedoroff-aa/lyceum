@@ -237,6 +237,7 @@
 		margin-top: 20px;
 		position: relative;
 		font-family: 'Domine', serif;
+		font-weight: 500;
 	}
 	
 	#req_more {
@@ -279,16 +280,14 @@
 		margin-top: calc(2/48*100%);
 	}
 	
-	.contacts_email, .contacts_tel {
-		font-size: 0.8em;
-		text-align: left;
+	.link_ {
+		text-decoration-line: none;
+		color: rgba(0, 255, 255, 1);
+		font-weight: 500;
+		font-size: 1em;
 	}	
 	#main_email {
 		margin-top: 20px;
-	}
-	#contacts_inner a {
-		text-decoration-line: none;
-		color: rgb(0, 222, 255);
 	}
 	#contacts_inner {
 		padding: 0.5em;
@@ -296,10 +295,9 @@
 		color: white;
 		font-family: 'Ubuntu Condensed', sans-serif;
 	}
-	.text_l {
+	.text_s {
 		text-align: left;
 		margin: 0;
-		font-size: 1em;
 	}
 	@media screen and (min-width:950px) {
 		.top-item {
@@ -523,29 +521,25 @@
 	}
 	
 	.menu_in {
-		width: calc(100% - 2.5px);
+		width: calc(100%);
 		display: flex !important;
 		flex-direction: column;
  		align-items: center;
 		position: absolute;
   		z-index: 104;
   		top: calc(100% + 2px);
-		right: 0.5px;
+		right: -2px;
 		justify-content: center;
  		background-color: white;
     	border-left: 2px solid rgb(240, 60, 0);
     	border-right: 2px solid rgb(240, 60, 0);
 	}
 	
-	.top-item:nth-last-child(1) .menu_in{
-		width: calc(100% - 2px);
-  		right: 2px;
-    	border-right: 0px solid rgba(0, 0, 0, 0);
+	#for_ent .menu_in{
+		right: 0 !important	;
+    	border-right: 0px solid rgba(0, 0, 0, 0) !important;
 	}
-	
 	.top-item:nth-child(1) .menu_in{
-		width: 100%;	
-		right: -0.5px !important;
     	border-left: 0px solid rgba(0, 0, 0, 0);
 	}
 	
@@ -614,6 +608,7 @@
 		text-align: left;
 		margin-top: 20px;
 		position: relative;
+		font-weight: 500;
 	}
 	
 	#req_more {
@@ -653,16 +648,14 @@
 		margin-top: calc(2/48*100%);
 	}
 	
-	.contacts_email, .contacts_tel {
-		font-size: 0.8em;
-		text-align: left;
+	.link_ {
+		text-decoration-line: none;
+		color: rgba(0, 255, 255, 1);
+		font-weight: 500;
+		font-size: 1em;
 	}	
 	#main_email {
 		margin-top: 20px;
-	}
-	#contacts_inner a, .contacts_email {
-		text-decoration-line: none;
-		color: rgb(0, 222, 225);
 	}
 	#contacts_inner {
 		padding: 0.5em;
@@ -670,7 +663,7 @@
 		color: white;
 		font-family: 'Ubuntu Condensed', sans-serif;
 	}
-	.text_l {
+	.text_s {
 		text-align: left;
 		margin: 0;
 		font-size: 1em;
@@ -1078,7 +1071,7 @@
 		text-align: left;
 		margin-top: 20px;
 		position: relative;	
-		font-weight: 700;
+		font-weight: 500;
 	}
 	
 	#req_more {
@@ -1121,10 +1114,12 @@
 	#main_email {
 		margin-top: 20px;
 	}
-	#contacts_inner a {
+	.link_ {
 		text-decoration-line: none;
-		color: rgb(0, 222, 255);
-	}
+		color: rgba(0, 255, 255, 1);
+		font-weight: 500;
+		font-size: 0.9em;
+	}	
 	#contacts_inner {
 		padding: 0.5em;
 		color: white;
@@ -1135,10 +1130,9 @@
 		margin-left: 35px;
 	}
 	
-	.text_l {
+	.text_s {
 		text-align: left;
 		margin: 0;
-		font-size: 1em;
 	}
 	
 	.map > ymaps{

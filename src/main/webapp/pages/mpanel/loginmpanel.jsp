@@ -45,7 +45,7 @@
 		<div id="inner">
 			<spring:form method="post"  modelAttribute="user" action="mpanel">
 				<spring:input path="name" id="name" placeholder="Username"/><br/>
-			  	<spring:input path="password" id="pass" placeholder="Password"/><br/>
+			  	<spring:input path="password" id="pass" placeholder="Password" type="password"/><br/>
 			  	<spring:button id="login_b">Log in</spring:button>
 			</spring:form>  
 		</div>

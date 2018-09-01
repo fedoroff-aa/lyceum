@@ -28,13 +28,10 @@ import info.forallactivities.sql_tables.Search;
 @Controller
 public class CommonController {
 	
-	@RequestMapping(value = "/article", method = RequestMethod.POST)
-	public ModelAndView article(@RequestParam("sid") long sid, @RequestParam("mid") long mid){
-		System.out.println(sid);
+	@RequestMapping(value = "/article")
+	public ModelAndView article(){
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/pages/article.jsp");
-		mav.addObject("sid", sid);
-		mav.addObject("mid", mid);
 		return mav;
 	}
 	

@@ -267,16 +267,15 @@
 		margin-top: calc(2/48*100%);
 	}
 	
-	.contacts_email, .contacts_tel {
-		font-size: 0.8em;
-		text-align: left;
-	}	
+	.link_ {
+		text-decoration-line: none;
+		color: rgba(0, 255, 255, 1);
+		font-weight: 500;
+		font-size: 1em;
+	}
+			
 	#main_email {
 		margin-top: 20px;
-	}
-	#contacts_inner a {
-		text-decoration-line: none;
-		color: rgb(0, 222, 255);
 	}
 	#contacts_inner {
 		padding: 0.5em;
@@ -284,7 +283,7 @@
 		color: white;
 		font-family: 'Ubuntu Condensed', sans-serif;
 	}
-	.text_l {
+	.text_s {
 		text-align: left;
 		margin: 0;
 		font-size: 1em;
@@ -633,16 +632,9 @@
 		margin-top: calc(2/48*100%);
 	}
 	
-	.contacts_email, .contacts_tel {
-		font-size: 0.8em;
-		text-align: left;
-	}	
+	
 	#main_email {
 		margin-top: 20px;
-	}
-	#contacts_inner a, .contacts_email {
-		text-decoration-line: none;
-		color: rgb(0, 222, 225);
 	}
 	#contacts_inner {
 		padding: 0.5em;
@@ -650,10 +642,17 @@
 		color: white;
 		font-family: 'Ubuntu Condensed', sans-serif;
 	}
-	.text_l {
+	
+	.link_ {
+		text-decoration-line: none;
+		color: rgba(0, 255, 255, 1);
+		font-weight: 500;
+		font-size: 1em;
+	}
+	
+	.text_s {
 		text-align: left;
 		margin: 0;
-		font-size: 1em;
 	}
 	
 	.toggle-to-top {
@@ -1092,10 +1091,6 @@
 	#main_email {
 		margin-top: 20px;
 	}
-	#contacts_inner a {
-		text-decoration-line: none;
-		color: rgb(0, 222, 255);
-	}
 	#contacts_inner {
 		padding: 0.5em;
 		color: white;
@@ -1106,10 +1101,16 @@
 		margin-left: 35px;
 	}
 	
-	.text_l {
+	.link_ {
+		text-decoration-line: none;
+		color: rgba(0, 255, 255, 1);
+		font-weight: 500;
+		font-size: 0.9em;
+	}	
+	
+	.text_s {
 		text-align: left;
 		margin: 0;
-		font-size: 1em;
 	}
 	
 	.map > ymaps{

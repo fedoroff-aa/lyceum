@@ -14,8 +14,7 @@ $(document).ready(function() {
 					.attr('sid',value.sid)
 					.appendTo(parent_dmenu);
 				el.click(function(){
-					$('#sid_f').val(el.attr('sid'));
-					$('#mid_f').val(value.mid);
+					Cookies.set("article_sid", value.sid, {expires: 1, path: '/'});
 					$('#article_f').submit();
 				});
 			});
@@ -148,7 +147,6 @@ $(document).ready(function() {
 	});
 	/* onclick for toggle to top */
 	$('.toggle-to-top').click(function (){
-		console.log(isMidScreen());
 		if ($(document).scrollTop() > $cont_top.height() + $logo_top.height()){scroll_to_top();} 
 		else if ($(document).scrollTop() > $cont_top.height() && !isMidScreen() && !isSmallScreen()){scroll_to_top();}
 	});

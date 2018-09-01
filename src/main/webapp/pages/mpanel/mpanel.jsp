@@ -59,9 +59,13 @@
 				<input type="submit" value="Log out">
 			</form>
 			<p>Новости</p>
-			<a href="/mpanel_addn">Добавить новость</a>
-			<a href="/mpanel_updn">Изменить новость</a>
-			<a href="/mpanel_rmn">Удалить новость</a>
+			<a href="/add_news">Добавить новость</a>
+			<a href="/update_news">Изменить новость</a>
+			<a href="/remove_news">Удалить новость</a>
+			<p>Статьи</p>
+			<a href="/add_article">Добавить статью</a>
+			<a href="/update_article">Изменить статью</a>
+			<a href="/remove_article">Удалить статью</a>
 		</div>
 	</div>
 </body>

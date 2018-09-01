@@ -9,7 +9,8 @@
 	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
 	crossorigin="anonymous"></script>
 	
-<script type="text/javascript" src="../webres/js/news_pref/update_article.js"></script>
+<script type="text/javascript" src="../webres/js/news_pref/update_news.js"></script>
+
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
@@ -121,7 +122,7 @@
 				<input type="text" id="header"><br>
 				<textarea id="content"></textarea><br>
 				<input type="text" id="date"><br>
-				<div class="button_upd">Сохранить</div>
+				<div class="button_upd">Сохранить изменения</div>
 			</div>
 		</div>
 	</div>

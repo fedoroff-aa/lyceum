@@ -1,4 +1,7 @@
 $(document).ready(function(){
-	console.log(mid_mav);
-	$('.newsinner').load("../pages/articles/article_"+sid_mav+".html");
+	if (Cookies.get("article_sid") > 0)
+	$('.newsinner').load("../pages/articles/article_"+Cookies.get("article_sid")+".html");
+	else {
+		$('.newsinner').load("../pages/articles/article_1.html");
+	}
 });

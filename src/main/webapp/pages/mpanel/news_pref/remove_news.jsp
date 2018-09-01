@@ -8,7 +8,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.js"
 	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
 	crossorigin="anonymous"></script>
-<script type="text/javascript" src="../webres/js/news_pref/remove_article.js"></script>
+<script type="text/javascript" src="../webres/js/news_pref/remove_news.js"></script>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
@@ -89,7 +89,7 @@
 		<div class="inner">
 			<select class="select_article js-example-responsive">
 			</select>
-			<div class="button_rm">Удалить</div>
+			<div class="button_rm">Удалить новость</div>
 		</div>	
 	</div>
 </body>
