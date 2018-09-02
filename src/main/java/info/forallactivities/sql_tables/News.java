@@ -78,7 +78,6 @@ public class News {
 
 	public void setDate(Date date) throws Exception{
 		DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm");
-		dateFormat.setTimeZone(TimeZone.getTimeZone("Europe/Moscow"));
 		this.date = dateFormat.parse(date.toString());
 	}
 
