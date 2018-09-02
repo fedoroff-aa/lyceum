@@ -7,7 +7,7 @@ $(document).ready(function(){
 		news_add["content"] = $('#content').val();
 		news_add["date"] = $('#date').val();
 		
-		toserver_full = {news:news_add, istorm:"0"};
+		toserver_full = {n:news_add, istorm:"0"};
 		console.log(toserver_full);
 		$.ajax({
 			type: "POST",

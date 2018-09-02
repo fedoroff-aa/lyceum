@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	
+	var gotfromserver;
 	$.ajax({
 		type: "POST",
 		contentType: "application/json; charset=utf-8",
@@ -7,7 +7,7 @@ $(document).ready(function() {
 		dataType: 'json',
 		timeout: 600000,
 		success: function(fromserver) {
-			var sel_article = $('.select_article');
+			var sel_article = $('.select_mitem');
 			if (fromserver.length > 0){
 				$.each(fromserver, function(key,value){
 					$('<option/>')
@@ -15,7 +15,7 @@ $(document).ready(function() {
 						.val(value.sid)
 						.appendTo(sel_article);
 				});
-				$(".js-example-responsive").select2();
+				$(".select_mitem").select2();
 			}
 		},
 		error : function(e) {
@@ -23,17 +23,15 @@ $(document).ready(function() {
 		}
 	});
 	
-	$(".button_askforla").click(function(){
-		console.log($('.select_article').val());
+	$(".button_rm").click(function(){
 		toserver = {};
-		toserver["pagename"] = "article_"+$('.select_article').val()+".html";
-		toserver["pagecontent"] = $('#pagecontents').val();
+		toserver["sid"] = $('.select_mitem').val();
 		$.ajax({
 			type : "POST",
-			contentType : "application/json;charset=UTF-8",
-			url : "addarticle",
+			contentType : "application/json;charset=utf-8",
+			url : "aur_mitem",
 			dataType : 'json',
-			data : JSON.stringify(toserver),
+			data : JSON.stringify({mi:toserver, istorm:"1"}),
 			timeout : 600000,
 			success : function(fromserver) {
 				console.log(fromserver);

@@ -55,7 +55,7 @@ $(document).ready(function(){
 		toserver_upd["content"] = $('#content').val();
 		toserver_upd["date"] = $('#date').val();
 		
-		toserver_full = {news:toserver_upd, istorm:"0"};
+		toserver_full = {n:toserver_upd, istorm:"0"};
 		console.log(toserver_full);
 		$.ajax({
 			type: "POST",

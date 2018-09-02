@@ -69,13 +69,13 @@
 		</div>
 
 		<div class="top-item" id="extra_a">
-			<div class="top-item-in">Extra activties</div>
+			<div class="top-item-in">Внеурочная деятельность</div>
 			<div class="menu_hide menu_bar" mid="3">
 			</div>
 		</div>
 
 		<div class="top-item" id="for_ent">
-			<div class="top-item-in">For entrants</div>
+			<div class="top-item-in">Поступающим</div>
 			<div class="menu_hide menu_bar" mid="4">
 			</div>
 		</div>

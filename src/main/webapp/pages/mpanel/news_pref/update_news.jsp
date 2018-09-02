@@ -25,6 +25,7 @@
 		.wrapper {
 			width: 100%;
 			display: flex;
+			flex-direction: column;
 			align-items: center;
 			justify-content: center;
 		}
@@ -70,9 +71,6 @@
 		
 		.select_article {
 			width: 50%;
-			padding: 0.25em 0.25em;
-			font-size: 1.5em;
-			margin-top: 1em;
 		}
 		@media screen and (min-width: 350px){ 
 			.select_article {
@@ -112,16 +110,14 @@
 </head>
 <body>
 <div class="wrapper">
+		<select class="select_article js-example-responsive">
+		</select>
+		<div class="button_askforln">Изменить</div>
 		<div class="inner">
-			<div class="req_article_list">
-				<select class="select_article js-example-responsive">
-				</select>
-				<div class="button_askforln">Изменить</div>
-			</div>
 			<div class="form_to_upd" style="display: none;">
 				<input type="text" id="header"><br>
 				<textarea id="content"></textarea><br>
-				<input type="text" id="date"><br>
+				<input type="text" id="date" placeholder="дд.мм.гггг чч:мм"><br>
 				<div class="button_upd">Сохранить изменения</div>
 			</div>
 		</div>

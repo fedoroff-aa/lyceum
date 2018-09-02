@@ -1,7 +1,9 @@
 package info.forallactivities.sql_tables;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TimeZone;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +13,9 @@ import javax.persistence.Id;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JacksonAnnotation;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 
 @Entity
 public class News {
@@ -22,18 +26,18 @@ public class News {
 	private String header;
 	@Column(columnDefinition="longtext")
 	private String content;
-	@DateTimeFormat(pattern="dd-MM-yyyy HH:mm")
-	private String date;
+	@JsonFormat(shape=Shape.STRING,pattern="dd.MM.yyyy HH:mm")
+	private Date date;
 	
 	public News(){}
-	public News(Long nid, String header, String content, String date) {
+	public News(Long nid, String header, String content, Date date) {
 		this.nid = nid;
 		this.header = header;
 		this.content = content;
 		this.date = date;
 	}
 	
-	public News(Long nid, String header, String date) {
+	public News(Long nid, String header, Date date) {
 		this.nid = nid;
 		this.header = header;
 		this.date = date;
@@ -68,10 +72,12 @@ public class News {
 	}
 
 	public String getDate() {
-		return date;
+		DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+		dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+03:00"));
+		return dateFormat.format(date);
 	}
 
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 

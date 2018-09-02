@@ -1106,17 +1106,15 @@
 	
 	.map {
 		position: relative;
-		display: flex;
-		justify-content: center;
-		margin-top: calc(2/48*100%);
 	}
 		
 	#main_email {
 		margin-top: 20px;
 	}
 	.link_ {
-		text-decoration-line: none;
-		color: rgba(0, 255, 255, 1);
+		-webkit-text-decoration: none !important;
+		text-decoration: none !important;
+		color: rgba(0, 255, 255, 1) !important;
 		font-weight: 500;
 		font-size: 0.9em;
 	}	
@@ -1135,9 +1133,7 @@
 		margin: 0;
 	}
 	
-	.map > ymaps{
-		width: 80% !important;
-	}
+	
 	@media screen and (min-width: 250px) {
 		.news_hdr{font-size: 1.1em;}
 		.news_text{font-size: 1em;}

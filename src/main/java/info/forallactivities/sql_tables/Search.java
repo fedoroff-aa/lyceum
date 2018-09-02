@@ -6,14 +6,14 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class Search {
 	private long id;
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy HH:mm", timezone="GMT+3")
-	private String date;
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd.MM.yyyy HH:mm", timezone="GMT+3")
+	private Date date;
 
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 

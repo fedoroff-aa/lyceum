@@ -71,13 +71,13 @@
 		</div>
 
 		<div class="top-item" id="extra_a">
-			<div class="top-item-in">Внеучебная деятельность</div>
+			<div class="top-item-in">Внеурочная деятельность</div>
 			<div class="menu_hide menu_bar" mid="3">
 			</div>
 		</div>
 
 		<div class="top-item" id="for_ent">
-			<div class="top-item-in">Для поступающих</div>
+			<div class="top-item-in">Поступающим</div>
 			<div class="menu_hide menu_bar" mid="4">
 			</div>
 		</div>
@@ -98,15 +98,15 @@
 						<div id="contacts_inner">
 							<div>Наши контакты</div>
 							<div class="text_s" id="main_email">E-mail: <a class="link_">1502@edu.mos.ru</a></div>
-							<div class="text_s"><a class="link_">Public</a> in VK<br></div>
+							<div class="text_s"><a class="link_" onclick="location.href='http://vk.com/'">Public</a> in VK<br></div>
 							Директор
 							<p class="text_s">Чудов Владимир Львович</p>
-							<a class="link_" href="">ChudovVL@edu.mos.ru</a><br>
-							<a class="link_" href="">+7 (495) 300-00-20</a><br>
-							<a class="link_" href="">+7 (965) 340-77-16</a><br>
+							<a class="link_">ChudovVL@edu.mos.ru</a><br>
+							<a class="link_">+7 (495) 300-00-20</a><br>
+							<a class="link_">+7 (965) 340-77-16</a><br>
 							Секретарь
 							<p class="text_s">Кулагина Нина Валентиновна</p>
-							<div><a class="link_ text_s" href="">+7(495)307-11-61</a></div>
+							<a class="link_ text_s">+7(495)307-11-61</a><br>
 							Адрес
 							<p class="text_s">Москва, улица Молостовых, дом 10А</p>
 						</div>
@@ -133,8 +133,6 @@
 			</div>
 	</div>
 	<form action="article" method="post" id="article_f" style="display:none;">
-		<input type="hidden" id="sid_f" name="sid">
-		<input type="hidden" id="mid_f" name="mid">
 		<input type="submit">
 	</form>
 </body>

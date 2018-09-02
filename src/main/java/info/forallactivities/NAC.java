@@ -32,8 +32,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import info.forallactivities.sql_tables.Article;
 import info.forallactivities.sql_tables.Menu_item;
+import info.forallactivities.sql_tables.MiN;
 import info.forallactivities.sql_tables.News;
-import info.forallactivities.sql_tables.NewsRMs;
 import info.forallactivities.sql_tables.News_;
 import info.forallactivities.sql_tables.Search;
 import info.forallactivities.sql_tables.Users;
@@ -43,6 +43,25 @@ import info.forallactivities.sql_tables.Users_;
 @Controller
 @SessionAttributes(value = "user")
 public class NAC {
+	/*	
+	 * 	MENU ITEM CONTROLLERS
+	 */	
+	
+	//map to page to add articles
+	@RequestMapping("/add_mitem")
+	public ModelAndView add_mitem() {
+		return new ModelAndView("/pages/mpanel/menu_pref/add_mitem.jsp");
+	}
+	
+	@RequestMapping("/update_mitem")
+	public ModelAndView update_mitem() {
+		return new ModelAndView("/pages/mpanel/menu_pref/update_mitem.jsp");
+	}
+	
+	@RequestMapping("/remove_mitem")
+	public ModelAndView remove_mitem() {
+		return new ModelAndView("/pages/mpanel/menu_pref/remove_mitem.jsp");
+	}
 	
 	@RequestMapping(value="/menu_items", method=RequestMethod.POST)
 	public @ResponseBody List<Menu_item> menu_items(){
@@ -61,7 +80,27 @@ public class NAC {
 		reg.close();
 		return menu_items;
 	}
-		
+	//a = add - u = update - r = remove
+	@RequestMapping(value = "/aur_mitem", method = RequestMethod.POST, consumes="application/json; charset=utf-8")
+	public @ResponseBody String aur_mitem(@ModelAttribute("user") Users user, @RequestBody MiN min) {
+		boolean isCorrectlDetails = isCorrectUser(user.getName(), user.getPassword());
+		if (isCorrectlDetails) {
+			ServiceRegistry reg = new StandardServiceRegistryBuilder().applySettings(forworkspace_conf(Menu_item.class).getProperties()).build();
+			SessionFactory sf = forworkspace_conf(Menu_item.class).buildSessionFactory(reg);
+			Session session = sf.openSession();
+			Transaction tx = session.beginTransaction();			
+			if (min.getIstorm().contains("1")) {
+				session.delete(min.getMi());
+			} else session.saveOrUpdate(min.getMi());
+			tx.commit();
+			session.close();
+			sf.close();
+			reg.close();
+			return "successful";
+		} else { return "error";}
+	}	
+	
+	
 	/*	
 	 * 	ARTICLE CONTROLLERS
 	 */
@@ -187,7 +226,7 @@ public class NAC {
 	
 	//a = add - u = update - r = remove
 	@RequestMapping(value = "/mpanel_aur_news", method = RequestMethod.POST)
-	public @ResponseBody String mpannel_addn(@ModelAttribute("user") Users user, @RequestBody NewsRMs news_fromserver) {
+	public @ResponseBody String mpannel_addn(@ModelAttribute("user") Users user, @RequestBody MiN news_fromserver) {
 		boolean isCorrectlDetails = isCorrectUser(user.getName(), user.getPassword());
 		if (isCorrectlDetails) {
 			ServiceRegistry reg = new StandardServiceRegistryBuilder().applySettings(forworkspace_conf(News.class).getProperties()).build();
@@ -195,8 +234,8 @@ public class NAC {
 			Session session = sf.openSession();
 			Transaction tx = session.beginTransaction();
 			if (news_fromserver.getIstorm().contains("1")) {
-				session.delete(news_fromserver.getNews());
-			} else session.saveOrUpdate(news_fromserver.getNews());
+				session.delete(news_fromserver.getN());
+			} else session.saveOrUpdate(news_fromserver.getN());
 			tx.commit();
 			session.close();
 			sf.close();
@@ -275,8 +314,8 @@ public class NAC {
 	public Configuration forworkspace_conf(Class<?> c) {
 		Properties prop = new Properties();
 		prop.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
-		prop.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/workspace");
-		prop.setProperty("hibernate.connection.username", "root");
+		prop.setProperty("hibernate.connection.url", "jdbc:mysql://mysql:3306/workspace");
+		prop.setProperty("hibernate.connection.username", "commonuser");
 		prop.setProperty("hibernate.connection.password", "faa252004");
 		prop.setProperty("hibernate.connection.characterEncoding", "utf8");
 		prop.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");

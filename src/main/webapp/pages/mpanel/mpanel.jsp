@@ -45,6 +45,7 @@
 			color: rgb(0, 0, 200);
 			text-decoration: none; 
 		} 
+		@media screen and (max-width: 570px){ a,p{font-size: 2em;} input[value="Log out"] {font-size:3em;padding: 0.1em 0.5em;}}
 		p { 
 			align-self: flex-start;
 			color: rgb(240,60,0);
@@ -66,6 +67,10 @@
 			<a href="/add_article">Добавить статью</a>
 			<a href="/update_article">Изменить статью</a>
 			<a href="/remove_article">Удалить статью</a>
+			<p>Панель навигации</p>
+			<a href="/add_mitem">Добавить пункт</a>
+			<a href="/update_mitem">Изменить пункт</a>
+			<a href="/remove_mitem">Удалить пункт</a>
 		</div>
 	</div>
 </body>

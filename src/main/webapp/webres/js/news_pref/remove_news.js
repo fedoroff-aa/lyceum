@@ -27,7 +27,7 @@ $(document).ready(function(){
 		news_remove = {};
 		
 		news_remove["nid"] = $('.select_article').val();
-		toserver_full = {news:news_remove, istorm:"1"};
+		toserver_full = {n:news_remove, istorm:"1"};
 		console.log(toserver_full);
 		$.ajax({
 			type: "POST",

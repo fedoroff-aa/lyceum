@@ -7,6 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat.Shape;
+
 @Entity
 @Table(name="menu_content")
 public class Menu_item {
@@ -15,6 +18,7 @@ public class Menu_item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long sid;
 	private long mid;
+	@JsonFormat(shape = Shape.STRING)
 	private String content;
 	
 	

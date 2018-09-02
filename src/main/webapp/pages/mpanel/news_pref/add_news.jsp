@@ -86,7 +86,7 @@
 		<div class="inner">
 			<input type="text" id="header" placeholder="Заголовок новости"/><br>
 			<textarea id="content" placeholder="Содержание новости"></textarea><br>
-			<input type="text" id="date" placeholder="дд-мм-гггг чч:мм"/><br>
+			<input type="text" id="date" placeholder="дд.мм.гггг чч:мм"/><br>
 			<div class="button_add">Добавить новость</div>
 		</div>
 	</div>
