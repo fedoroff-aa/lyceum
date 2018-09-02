@@ -1104,7 +1104,8 @@
   		background-position: 0px 0px;
 	}
 	
-	.map {
+	.map > ymaps {
+		width: 100% !important;
 		position: relative;
 	}
 		

@@ -123,11 +123,11 @@ public class NAC {
 	}
 	
 	@RequestMapping(value = "/addarticle", method = RequestMethod.POST)
-	public @ResponseBody String addarticle(@ModelAttribute("user") Users user, @RequestBody Article aa, HttpServletRequest h) {
+	public @ResponseBody String addarticle(@ModelAttribute("user") Users user, @RequestBody Article aa) {
 		boolean isCorrectlDetails = isCorrectUser(user.getName(), user.getPassword());
 		if (isCorrectlDetails) {
 			try {
-				File f = new File(h.getSession().getServletContext().getRealPath("/pages/articles"), aa.getPagename());
+				File f = new File("/pages/articles", aa.getPagename());
 				if (f.exists()) return "such file is already on server";
 				f.createNewFile();
 				FileUtils.writeStringToFile(f, aa.getPagecontent(), StandardCharsets.UTF_8);
@@ -138,11 +138,11 @@ public class NAC {
 	}
 	
 	@RequestMapping(value = "/getarticlec", method = RequestMethod.POST)
-	public @ResponseBody Article getarticlecontent(@ModelAttribute("user") Users user, @RequestBody Article aa, HttpServletRequest h) {
+	public @ResponseBody Article getarticlecontent(@ModelAttribute("user") Users user, @RequestBody Article aa) {
 		boolean isCorrectlDetails = isCorrectUser(user.getName(), user.getPassword());
 		if (isCorrectlDetails) {
 			try {
-				File f = new File(h.getSession().getServletContext().getRealPath("/pages/articles"), aa.getPagename());
+				File f = new File("/pages/articles", aa.getPagename());
 				if (f.exists()) {
 					return new Article(null,FileUtils.readFileToString(f, StandardCharsets.UTF_8));
 				}
@@ -153,11 +153,11 @@ public class NAC {
 	}
 	
 	@RequestMapping(value = "/rmarticle", method = RequestMethod.POST)
-	public @ResponseBody String removearticle(@ModelAttribute("user") Users user, @RequestBody Article aa, HttpServletRequest h) {
+	public @ResponseBody String removearticle(@ModelAttribute("user") Users user, @RequestBody Article aa) {
 		boolean isCorrectlDetails = isCorrectUser(user.getName(), user.getPassword());
 		if (isCorrectlDetails) {
 			try {
-				File f = new File(h.getSession().getServletContext().getRealPath("/pages/articles"), aa.getPagename());
+				File f = new File("/pages/articles", aa.getPagename());
 				if (f.exists()) {
 					return "successful? "+f.delete();
 				}
@@ -168,11 +168,11 @@ public class NAC {
 	}
 	
 	@RequestMapping(value = "/setarticlec", method = RequestMethod.POST)
-	public @ResponseBody String setarticlecontent(@ModelAttribute("user") Users user, @RequestBody Article aa, HttpServletRequest h) {
+	public @ResponseBody String setarticlecontent(@ModelAttribute("user") Users user, @RequestBody Article aa) {
 		boolean isCorrectlDetails = isCorrectUser(user.getName(), user.getPassword());
 		if (isCorrectlDetails) {
 			try {
-				File f = new File(h.getSession().getServletContext().getRealPath("/pages/articles"), aa.getPagename());
+				File f = new File("/pages/articles", aa.getPagename());
 				if (f.exists()) {
 					FileUtils.writeStringToFile(f, aa.getPagecontent(), StandardCharsets.UTF_8);
 					return "successful";
