@@ -26,7 +26,7 @@ public class News {
 	private String header;
 	@Column(columnDefinition="longtext")
 	private String content;
-	@JsonFormat(shape=Shape.STRING,pattern="dd.MM.yyyy HH:mm")
+	@JsonFormat(shape=Shape.STRING,pattern="dd.MM.yyyy HH:mm", timezone="Europe/Moscow")
 	private Date date;
 	
 	public News(){}
@@ -73,11 +73,10 @@ public class News {
 
 	public String getDate() {
 		DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm");
-		dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+03:00"));
 		return dateFormat.format(date);
 	}
 
-	public void setDate(Date date) {
+	public void setDate(Date date) throws Exception{
 		this.date = date;
 	}
 
