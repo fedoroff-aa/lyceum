@@ -76,9 +76,8 @@ public class News {
 		return dateFormat.format(date);
 	}
 
-	public void setDate(Date date) throws Exception{
-		DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm");
-		this.date = dateFormat.parse(date.toString());
+	public void setDate(Date date){
+		this.date = date;
 	}
 
 	@Override
