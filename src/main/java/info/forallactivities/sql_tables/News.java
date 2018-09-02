@@ -26,7 +26,7 @@ public class News {
 	private String header;
 	@Column(columnDefinition="longtext")
 	private String content;
-	@JsonFormat(shape=Shape.STRING,pattern="dd.MM.yyyy HH:mm", timezone="Europe/Moscow")
+	@JsonFormat(shape=Shape.STRING,pattern="dd.MM.yyyy HH:mm")
 	private Date date;
 	
 	public News(){}
