@@ -107,6 +107,7 @@ public class NAC {
 	//map to page to add articles
 	@RequestMapping("/add_article")
 	public ModelAndView add_article() {
+		System.out.println(System.getenv("OPENSHIFT_DATA_DIR"));
 		return new ModelAndView("/pages/mpanel/articles_pref/add_article.jsp");
 	}
 	
@@ -127,7 +128,7 @@ public class NAC {
 		boolean isCorrectlDetails = isCorrectUser(user.getName(), user.getPassword());
 		if (isCorrectlDetails) {
 			try {
-				File f = new File("/pages/articles", aa.getPagename());
+				File f = new File(System.getenv("OPENSHIFT_DATA_DIR") + "/pages/articles", aa.getPagename());
 				if (f.exists()) return "such file is already on server";
 				f.createNewFile();
 				FileUtils.writeStringToFile(f, aa.getPagecontent(), StandardCharsets.UTF_8);
@@ -142,7 +143,7 @@ public class NAC {
 		boolean isCorrectlDetails = isCorrectUser(user.getName(), user.getPassword());
 		if (isCorrectlDetails) {
 			try {
-				File f = new File("/pages/articles", aa.getPagename());
+				File f = new File(System.getenv("OPENSHIFT_DATA_DIR") + "/pages/articles", aa.getPagename());
 				if (f.exists()) {
 					return new Article(null,FileUtils.readFileToString(f, StandardCharsets.UTF_8));
 				}
@@ -157,7 +158,7 @@ public class NAC {
 		boolean isCorrectlDetails = isCorrectUser(user.getName(), user.getPassword());
 		if (isCorrectlDetails) {
 			try {
-				File f = new File("/pages/articles", aa.getPagename());
+				File f = new File(System.getenv("OPENSHIFT_DATA_DIR") + "/pages/articles", aa.getPagename());
 				if (f.exists()) {
 					return "successful? "+f.delete();
 				}
